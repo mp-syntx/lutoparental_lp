@@ -221,13 +221,19 @@ details[open] .pl::after{transform:rotate(0)}
 .faq details p{padding:0 40px 22px 0;color:var(--cinza);font-size:15.5px}
 
 /* ---------- fechamento e rodapé ---------- */
-.final{position:relative;overflow:hidden;background:var(--petroleo);color:#fff;padding-block:80px}
-.final .fita{position:absolute;left:-300px;bottom:-420px;width:900px;height:900px;opacity:.08;pointer-events:none}
-.final .wrap{position:relative;display:grid;gap:16px;justify-items:start}
-.final h2{color:#fff;font-size:clamp(28px,3.4vw,42px);max-width:15em}
-.final .sel{background:var(--azul);color:var(--verde)}
-.final p{color:var(--azul-l);max-width:36em}
-.final .btn{margin-top:12px}
+.final{position:relative;overflow:hidden;isolation:isolate;background:var(--verde);color:#fff;padding-block:96px}
+.final .topo-bg{object-position:62% 55%}
+.final::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(29,62,49,.95) 0%,rgba(29,62,49,.84) 45%,rgba(29,62,49,.55) 100%)}
+.final-grade{display:grid;grid-template-columns:minmax(0,1fr) var(--form-w);gap:56px;align-items:center}
+.final-txt{display:grid;gap:18px;justify-items:start}
+.final h2{color:#fff;font-size:clamp(30px,3.6vw,46px);line-height:1.15;max-width:14em;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+.final-txt p:not(.chip){color:#EAF1EC;font-size:17px;max-width:32em}
+.final-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-radius:24px;padding:28px;display:grid;gap:20px}
+.final-capas{position:relative;height:200px;display:flex;align-items:flex-end;justify-content:center}
+.fc-livro{position:absolute;left:12%;bottom:6px;z-index:2;width:118px;height:auto;border-radius:2px 6px 6px 2px;transform:rotate(-5deg);box-shadow:-10px 20px 34px -14px rgba(0,0,0,.6)}
+.final-capas .note{width:250px;margin-left:96px}
+.final .inclui{margin:0;display:grid;gap:8px}
+.final .inclui li{justify-self:start}
 .rodape{background:var(--verde);color:var(--salvia-l);padding-block:36px}
 .rodape .wrap{display:grid;gap:22px}
 .rodape-l{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px}
@@ -280,7 +286,9 @@ details[open] .pl::after{transform:rotate(0)}
   .materiais{padding-top:0}
   .topo::before{background:linear-gradient(180deg,rgba(29,62,49,.78) 0%,rgba(29,62,49,.86) 55%,rgba(29,62,49,.95) 100%)}
   .topo .wrap{padding-top:calc(var(--nav-h) + 32px);padding-bottom:56px}
-  .numeros,.mock,.qgrade,.aut{grid-template-columns:minmax(0,1fr)}
+  .numeros,.mock,.qgrade,.aut,.final-grade{grid-template-columns:minmax(0,1fr)}
+  .final{padding-block:64px}
+  .final::before{background:linear-gradient(180deg,rgba(29,62,49,.82),rgba(29,62,49,.95))}
   .palco{height:320px}
   .th img{height:240px}
   .trilho-d .th img{height:180px}
@@ -303,6 +311,9 @@ details[open] .pl::after{transform:rotate(0)}
   .cartao{padding:22px 18px}
   .campo-par{grid-template-columns:1fr}
   .livro3d{width:150px;margin-right:50px}
+  .final-card{padding:22px 18px}
+  .final-capas .note{width:200px;margin-left:80px}
+  .fc-livro{width:96px;left:6%}
   .faq details p{padding-right:0}
   .rodape{padding-bottom:110px}
 }
