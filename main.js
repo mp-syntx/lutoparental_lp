@@ -83,7 +83,7 @@
       fInd.hidden = true;
       abrir.setAttribute('aria-expanded', 'false');
       abrir.innerHTML = 'Indicar outra pessoa <span aria-hidden="true">+</span>';
-      okInd.textContent = 'Indicação enviada. ' + nome + ' vai receber o guia por e-mail, em seu nome.';
+      okInd.textContent = 'Pronto. ' + nome + ' vai receber o guia por e-mail.';
       okInd.hidden = false;
       botao.disabled = false; botao.textContent = 'Enviar indicação';
       EVA.evento('indicacao_concluida');
