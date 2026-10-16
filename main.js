@@ -24,8 +24,52 @@
   navEstado();
   window.addEventListener('scroll', navEstado, { passive: true });
 
-  // botões que chamam o cadastro: levam ao cartão na abertura e destacam.
-  // Com cadastro feito, os de e-book (data-ir-form="ebook") abrem o PDF direto.
+  // painel do formulário: o mesmo cartão da abertura é levado para o painel e volta ao fechar,
+  // então campos preenchidos, sucesso e indicação continuam iguais nos dois lugares
+  var casa = $('#cadastro'), gaveta = $('#gaveta'), painel = $('#gaveta-painel'), slot = $('#gaveta-slot');
+  var semMovimento = matchMedia('(prefers-reduced-motion:reduce)');
+  var origem = null, fechando = null;
+  function focoInicial() { return passoCad.hidden ? passoOk : $('input', passoCad); }
+  function abrirGaveta(gatilho) {
+    clearTimeout(fechando);
+    origem = gatilho || null;
+    casa.style.minHeight = casa.offsetHeight + 'px';
+    slot.appendChild(cartao);
+    gaveta.hidden = false;
+    void gaveta.offsetWidth;
+    gaveta.classList.add('aberta');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { focoInicial().focus({ preventScroll: true }); }, semMovimento.matches ? 0 : 380);
+    EVA.evento('cadastro_painel', { origem: (gatilho && gatilho.textContent.trim()) || '' });
+  }
+  function fecharGaveta() {
+    if (gaveta.hidden) return;
+    gaveta.classList.remove('aberta');
+    fechando = setTimeout(function () {
+      gaveta.hidden = true;
+      casa.appendChild(cartao);
+      casa.style.minHeight = '';
+      document.body.style.overflow = '';
+      if (origem) origem.focus({ preventScroll: true });
+    }, semMovimento.matches ? 0 : 500);
+  }
+  gaveta.querySelectorAll('[data-fechar]').forEach(function (b) { b.addEventListener('click', fecharGaveta); });
+  document.addEventListener('keydown', function (e) {
+    if (gaveta.hidden || !gaveta.classList.contains('aberta')) return;
+    if (e.key === 'Escape') { fecharGaveta(); return; }
+    if (e.key !== 'Tab') return;
+    var f = Array.prototype.filter.call(painel.querySelectorAll('a[href],button:not([disabled]),input,select,[tabindex="0"]'), function (el) { return el.offsetParent !== null; });
+    if (!f.length) return;
+    if (e.shiftKey && document.activeElement === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+  });
+
+  // botões que chamam o cadastro: com o cartão da abertura à vista, só destacam;
+  // fora dela, abrem o painel. Com cadastro feito, os de e-book (data-ir-form="ebook") abrem o PDF direto.
+  function cartaoAVista() {
+    var r = casa.getBoundingClientRect();
+    return r.top < window.innerHeight * 0.55 && r.bottom > window.innerHeight * 0.35;
+  }
   document.querySelectorAll('[data-ir-form]').forEach(function (a) {
     a.addEventListener('click', function (e) {
       if (a.getAttribute('data-ir-form') === 'ebook' && passoCad.hidden) {
@@ -33,10 +77,12 @@
         return;
       }
       e.preventDefault();
-      cartao.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'center' });
-      cartao.classList.remove('chama'); void cartao.offsetWidth; cartao.classList.add('chama');
-      var f = $('input', passoCad.hidden ? passoOk : passoCad);
-      if (f && !passoCad.hidden) setTimeout(function () { f.focus({ preventScroll: true }); }, 450);
+      if (cartaoAVista()) {
+        cartao.classList.remove('chama'); void cartao.offsetWidth; cartao.classList.add('chama');
+        focoInicial().focus({ preventScroll: true });
+        return;
+      }
+      abrirGaveta(a);
     });
   });
   function ctasCadastrado() {
