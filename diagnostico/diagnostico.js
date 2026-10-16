@@ -169,7 +169,7 @@ function enviarResultado(tot){
   if(ult===assinatura)return;
   const hoje=new Date(),data=hoje.getFullYear()+'-'+String(hoje.getMonth()+1).padStart(2,'0')+'-'+String(hoje.getDate()).padStart(2,'0');
   const k=EVA.campos;
-  const pares=[['email',c.email],[k.diagTotal,String(tot)],[k.diagFaixa,faixa],
+  const pares=[['email',c.email],['fullname',c.nomeCompleto||c.nome||''],[k.diagTotal,String(tot)],[k.diagFaixa,faixa],
     [k.diagMenor,ps.map((n,i)=>n===min?BLOCOS[i].c:null).filter(Boolean).join(', ')],[k.diagItens,itens],[k.diagData,data]]
     .concat(ps.map((n,i)=>[k.diagB[i],String(n)]));
   EVA.enviar('diagnostico',pares).then(()=>{try{localStorage.setItem(KEY_ENV,assinatura)}catch(e){}EVA.evento('diagnostico_concluido',{faixa})},()=>{});

@@ -10,10 +10,10 @@
   var RAIZ = new URL('..', (document.currentScript && document.currentScript.src) || location.href).href;
   var CONFIG = {
     endpoint: 'https://bastasentir.activehosted.com/proc.php',
-    // formulário A "LP Luto no trabalho" (lista 9, tag 84) — preencher com os valores da AC
-    cadastro: { u: '', f: '', or: '' },
-    // formulário B "Diagnóstico de parentalidade" (lista 9, tag 85)
-    diagnostico: { u: '', f: '', or: '' },
+    // formulário A #13 "LP Luto no trabalho" (lista 9, tag 84); `or` muda se o formulário for salvo de novo
+    cadastro: { u: '6AD23F5B7C0C1', f: '13', or: '9758a96f-0bd8-4993-82cc-a23756cfbe5c' },
+    // formulário B #15 "Diagnóstico de parentalidade" (lista 9, tag 85)
+    diagnostico: { u: '6AD23F5DB5E0F', f: '15', or: 'e4347f67-187b-4dc1-a120-f56a2558ea13' },
     // formulário 12 "Indique sua empresa" (pipeline 3, etapa 25)
     indicacao: { u: '6AD0222C091DC', f: '12', or: 'ebb93716-167b-475e-8b5d-b9a99d06cca9' },
     // PDF otimizado entregue pelo time da Eva
