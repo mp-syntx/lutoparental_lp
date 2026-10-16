@@ -21,24 +21,39 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
 <link rel="preload" as="image" href="assets/img/hero-flor.webp" media="(min-width:861px)">
-<link rel="stylesheet" href="styles.css?v=22">
+<link rel="stylesheet" href="styles.css?v=31">
 </head>
 <body>
 
 <a class="skip" href="#cadastro">Pular para o cadastro</a>
 
-<!-- ============ ABERTURA ============ -->
-<header class="topo" id="topo">
+<!-- ============ CABEÇALHO ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="logos" href="#topo" aria-label="Eva Maternidade e Instituto do Luto Parental, voltar ao início">
+      <span class="eva"><img src="assets/img/eva-branco.svg" alt="" width="118" height="51"><span>maternidade</span></span>
+      <span class="div" aria-hidden="true"></span>
+      <img class="logo-ilp" src="assets/img/logo-ilp-branco.png" alt="" width="172" height="71">
+    </a>
+    <nav class="menu" aria-label="Seções">
+      <a href="#materiais">O que você recebe</a>
+      <a href="#previa">Prévia</a>
+      <a href="#perguntas">Perguntas</a>
+      <a href="#autores">Quem assina</a>
+    </nav>
+    <a class="btn btn-rosa btn-sm" href="#cadastro" data-ir-form>Acessar<span class="lg"> os materiais</span></a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ ABERTURA (com o cadastro) ============ -->
+<section class="topo" id="topo">
   <picture>
     <source media="(max-width:860px)" srcset="assets/img/hero-flor-m.webp">
     <img class="topo-bg" src="assets/img/hero-flor.webp" alt="" width="934" height="579" fetchpriority="high">
   </picture>
-  <div class="wrap com-form">
-    <div class="logos" aria-label="Eva Maternidade e Instituto do Luto Parental">
-      <span class="eva"><img src="assets/img/eva-branco.svg" alt="Eva" width="118" height="51"><span>maternidade</span></span>
-      <span class="div" aria-hidden="true"></span>
-      <img class="logo-ilp" src="assets/img/logo-ilp-branco.png" alt="Instituto do Luto Parental" width="172" height="71">
-    </div>
+  <div class="wrap grade">
     <div class="topo-txt">
       <span class="chip">Material gratuito para RH e lideranças</span>
       <h1>Quando o luto chega ao trabalho, sua empresa <span class="sel">sabe o que fazer?</span></h1>
@@ -48,12 +63,8 @@
         <li><svg class="ck" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 6"/></svg>Diagnóstico online com resultado na hora</li>
         <li><svg class="ck" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l4 4L16 6"/></svg>Gratuito</li>
       </ul>
-      <a class="btn btn-rosa so-mobile" href="#cadastro" data-ir-form>Quero receber os materiais <svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10.5 4.5L16 10l-5.5 5.5"/></svg></a>
     </div>
-  </div>
-</header>
 
-<!-- ============ CADASTRO (flutuante no desktop) ============ -->
 <aside class="cartao-wrap" id="cadastro" aria-label="Receber o e-book e o diagnóstico">
   <div class="cartao" id="cartao">
 
@@ -169,12 +180,12 @@
 
   </div>
 </aside>
-
-<main>
+  </div>
+</section>
 
 <!-- ============ POR QUE FALAR DISSO ============ -->
 <section class="secao creme" id="porque" aria-labelledby="h-porque">
-  <div class="wrap com-form">
+  <div class="wrap">
     <div class="cab">
       <p class="kick">Por que falar disso no trabalho</p>
       <h2 id="h-porque">Uma perda mais comum do que o silêncio faz parecer</h2>
@@ -190,7 +201,7 @@
 
 <!-- ============ O QUE VOCÊ RECEBE ============ -->
 <section class="secao creme materiais" id="materiais" aria-labelledby="h-mat">
-  <div class="wrap com-form">
+  <div class="wrap">
     <div class="cab">
       <p class="kick">O que você recebe</p>
       <h2 id="h-mat">Dois materiais para preparar a empresa antes que um caso aconteça</h2>
@@ -216,6 +227,7 @@
             <li>Checklists e roteiros para consulta rápida</li>
           </ul>
           <div class="meta"><span>64 páginas</span><span>10 partes</span><span>Ferramentas práticas</span></div>
+          <a class="btn btn-verde" href="#cadastro" data-ir-form="ebook">Baixar o e-book <svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10.5 4.5L16 10l-5.5 5.5"/></svg></a>
         </div>
       </article>
       <article class="mcard" data-rev>
@@ -234,6 +246,7 @@
             <li>Liderança e cultura, e todas as famílias</li>
           </ul>
           <div class="meta"><span>6 blocos</span><span>36 itens</span><span>Cerca de 5 minutos</span></div>
+          <a class="btn btn-rosa" data-diag href="diagnostico/">Fazer o diagnóstico <svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10.5 4.5L16 10l-5.5 5.5"/></svg></a>
         </div>
       </article>
     </div>
@@ -242,7 +255,7 @@
 
 <!-- ============ PRÉVIA ============ -->
 <section class="secao previa" id="previa" aria-labelledby="h-prev">
-  <div class="wrap com-form">
+  <div class="wrap">
     <div class="cab">
       <p class="kick">Prévia</p>
       <h2 id="h-prev">Folheie algumas páginas antes de baixar</h2>
@@ -277,74 +290,32 @@
 </div>
 
 <!-- ============ PERGUNTAS ============ -->
-<section class="secao perguntas" id="perguntas" aria-labelledby="h-perg">
-  <div class="wrap com-form">
+<section class="secao creme perguntas" id="perguntas" aria-labelledby="h-perg">
+  <div class="wrap">
     <div class="cab">
       <p class="kick">Perguntas que o e-book responde</p>
-      <h2 id="h-perg">As perguntas que chegam ao RH, respondidas no guia</h2>
+      <h2 id="h-perg">As dúvidas que chegam ao RH quando uma perda acontece</h2>
       <p>O e-book organiza as respostas na ordem em que essas questões costumam aparecer, da notícia aos meses seguintes.</p>
     </div>
     <div class="qgrade">
-      <article class="qg" data-rev><h3 class="qh" style="background:var(--verde)">Quando a notícia chega</h3><ul>
-        <li><span>Quem deve ligar para a pessoa, e quando?</span><small>Parte 4 · Quem entra em contato e quando</small></li>
-        <li><span>Como tratar de licença e documentos sem ser insensível?</span><small>Parte 4 · Um familiar pode cuidar da burocracia</small></li>
-      </ul></article>
-      <article class="qg" data-rev><h3 class="qh" style="background:var(--framboesa)">Direitos e licenças</h3><ul>
-        <li><span>A perda dá direito a licença-maternidade?</span><small>Parte 2 · Licenças previstas em lei</small></li>
-      </ul></article>
-      <article class="qg" data-rev><h3 class="qh" style="background:var(--petroleo)">A equipe</h3><ul>
-        <li><span>Conto para o time ou não?</span><small>Parte 5 · Perguntar como ela quer que o assunto seja conduzido</small></li>
-        <li><span>E se ela não quiser que ninguém saiba?</span><small>Parte 5 · Situação prática</small></li>
-      </ul></article>
-      <article class="qg" data-rev><h3 class="qh" style="background:var(--teal)">O retorno ao trabalho</h3><ul>
-        <li><span>Mantenho as atividades normais ou alivio a carga?</span><small>Parte 6 · Não pressupor queda de entrega</small></li>
-      </ul></article>
-      <article class="qg" data-rev><h3 class="qh" style="background:var(--azul);color:var(--verde)">Cuidado no dia a dia</h3><ul>
-        <li><span>O que dizer, e o que não dizer?</span><small>Parte 7 · O que dizer e como perguntar</small></li>
-        <li><span>No Dia das Mães, trato essa pessoa como mãe?</span><small>Parte 8 · Datas do calendário</small></li>
-      </ul></article>
+      <article class="qg" data-rev><h3 class="qh" style="background:var(--verde)">Quando a notícia chega</h3><ul><li>Quem deve ligar para a pessoa, e quando?</li><li>Preciso mandar coroa de flores? O que enviar?</li><li>Como tratar de licença e documentos sem ser insensível?</li><li>E se a pessoa não responder?</li></ul></article>
+      <article class="qg" data-rev><h3 class="qh" style="background:var(--framboesa)">Direitos e documentos</h3><ul><li>A perda dá direito a licença-maternidade?</li><li>Quantos dias o parceiro ou a parceira tem?</li><li>Que documento a colaboradora precisa apresentar?</li><li>Ela tem estabilidade no emprego depois da perda?</li></ul></article>
+      <article class="qg" data-rev><h3 class="qh" style="background:var(--petroleo)">A equipe</h3><ul><li>Conto para o time ou não?</li><li>E se ela não quiser que ninguém saiba?</li><li>Os colegas devem perguntar sobre o bebê?</li></ul></article>
+      <article class="qg" data-rev><h3 class="qh" style="background:var(--teal)">O retorno ao trabalho</h3><ul><li>Mantenho as atividades normais ou alivio a carga?</li><li>E se o projeto não puder esperar?</li><li>Por quanto tempo preciso acompanhar?</li><li>Convido para almoço e happy hour ou dou espaço?</li></ul></article>
+      <article class="qg" data-rev><h3 class="qh" style="background:var(--azul);color:var(--verde)">Cuidado no dia a dia</h3><ul><li>O que dizer, e o que não dizer?</li><li>No Dia das Mães, trato essa pessoa como mãe?</li><li>Como saber se a pessoa precisa de ajuda profissional?</li><li>O que a empresa pode oferecer além da lei?</li></ul></article>
       <article class="qg qcta" data-rev>
         <p class="kick">E-book gratuito</p>
         <h3>Tenha as respostas à mão quando o caso chegar</h3>
         <p>Preencha o formulário e receba o e-book junto com o diagnóstico.</p>
-        <a class="btn btn-rosa" href="#cadastro" data-ir-form>Quero o e-book <svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10.5 4.5L16 10l-5.5 5.5"/></svg></a>
+        <a class="btn btn-rosa" href="#cadastro" data-ir-form="ebook">Quero o e-book <svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10.5 4.5L16 10l-5.5 5.5"/></svg></a>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ============ DIAGNÓSTICO ============ -->
-<section class="secao creme diag" id="diagnostico" aria-labelledby="h-diag">
-  <div class="wrap com-form">
-    <div class="diag-painel">
-      <div class="diag-tela" aria-hidden="true">
-        <div class="note"><div class="tela"><img src="assets/img/previa/diag-resultado-p.webp" alt="" width="640" height="398" loading="lazy"></div><div class="base"></div></div>
-      </div>
-      <div class="diag-corpo">
-        <span class="etq" style="background:var(--rosa)">Incluído no cadastro</span>
-        <h2 id="h-diag">Diagnóstico de parentalidade da sua empresa</h2>
-        <p class="diag-sub">Sua empresa cuida das famílias em toda a jornada, do planejamento ao luto? Marque o que ela já oferece de forma estruturada e veja, ao final, a leitura de cada etapa e por onde começar.</p>
-        <p class="avalia-t">Em cerca de <b>5 minutos</b>, você avalia:</p>
-        <ol class="blocos">
-          <li style="--c:var(--petroleo)"><span>1</span>Planejamento familiar e gestação</li>
-          <li style="--c:var(--verde2)"><span>2</span>Licenças e retorno ao trabalho</li>
-          <li style="--c:var(--teal)"><span>3</span>Saúde emocional na parentalidade</li>
-          <li style="--c:var(--verde)"><span>4</span>Luto parental</li>
-          <li style="--c:var(--framboesa)"><span>5</span>Liderança e cultura</li>
-          <li style="--c:var(--azul);--t:var(--verde)"><span>6</span>Todas as famílias</li>
-        </ol>
-        <div class="diag-cta">
-          <a class="btn btn-rosa" data-diag href="diagnostico/">Fazer o diagnóstico <svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10.5 4.5L16 10l-5.5 5.5"/></svg></a>
-          <p>Liberado com o mesmo cadastro do e-book.</p>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
 <!-- ============ QUEM ASSINA ============ -->
 <section class="secao autores" id="autores" aria-labelledby="h-aut">
-  <div class="wrap com-form">
+  <div class="wrap">
     <div class="cab">
       <p class="kick">Quem assina</p>
       <h2 id="h-aut">Escrito por quem acompanha famílias enlutadas</h2>
@@ -365,7 +336,7 @@
 
 <!-- ============ DÚVIDAS ============ -->
 <section class="secao faq" id="duvidas" aria-labelledby="h-faq">
-  <div class="wrap com-form">
+  <div class="wrap">
     <div class="cab">
       <p class="kick">Dúvidas</p>
       <h2 id="h-faq">Sobre o material</h2>
@@ -381,7 +352,7 @@
 <!-- ============ FECHAMENTO ============ -->
 <section class="final" aria-labelledby="h-final">
   <img class="fita" src="assets/img/fita.svg" alt="" aria-hidden="true" width="900" height="900" loading="lazy">
-  <div class="wrap com-form">
+  <div class="wrap">
     <h2 id="h-final">Nenhuma pessoa deveria viver o luto <span class="sel">sozinha no trabalho.</span></h2>
     <p>O e-book e o diagnóstico são gratuitos e liberados assim que você preenche o formulário.</p>
     <a class="btn btn-rosa" href="#cadastro" data-ir-form>Acessar os materiais <svg class="i" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h13M10.5 4.5L16 10l-5.5 5.5"/></svg></a>
@@ -391,7 +362,7 @@
 </main>
 
 <footer class="rodape">
-  <div class="wrap com-form">
+  <div class="wrap">
     <div class="rodape-l">
       <div class="logos">
         <span class="eva"><img src="assets/img/eva-branco.svg" alt="Eva" width="118" height="51" loading="lazy"><span>maternidade</span></span>
@@ -418,6 +389,6 @@
 
 <script src="assets/eva.js?v=2"></script>
 <script src="assets/cadastro.js?v=1"></script>
-<script src="main.js?v=3"></script>
+<script src="main.js?v=4"></script>
 </body>
 </html>

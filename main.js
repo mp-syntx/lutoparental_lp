@@ -18,24 +18,43 @@
     a.addEventListener('click', function () { EVA.evento('diagnostico_clique', { origem: 'lp' }); });
   });
 
-  // botões que chamam o cadastro: no desktop o cartão já está visível, então só destaca
+  // cabeçalho: transparente sobre a abertura, sólido depois de rolar
+  var nav = $('#nav');
+  function navEstado() { nav.classList.toggle('solida', window.scrollY > 24); }
+  navEstado();
+  window.addEventListener('scroll', navEstado, { passive: true });
+
+  // botões que chamam o cadastro: levam ao cartão na abertura e destacam.
+  // Com cadastro feito, os de e-book (data-ir-form="ebook") abrem o PDF direto.
   document.querySelectorAll('[data-ir-form]').forEach(function (a) {
     a.addEventListener('click', function (e) {
-      if (!desktop.matches) return;
+      if (a.getAttribute('data-ir-form') === 'ebook' && passoCad.hidden) {
+        EVA.evento('ebook_download', { origem: 'cta' });
+        return;
+      }
       e.preventDefault();
+      cartao.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'center' });
       cartao.classList.remove('chama'); void cartao.offsetWidth; cartao.classList.add('chama');
       var f = $('input', passoCad.hidden ? passoOk : passoCad);
-      if (f) f.focus({ preventScroll: true });
+      if (f && !passoCad.hidden) setTimeout(function () { f.focus({ preventScroll: true }); }, 450);
     });
   });
+  function ctasCadastrado() {
+    document.querySelectorAll('[data-ir-form="ebook"]').forEach(function (a) {
+      a.href = EVA.config.pdfUrl;
+      a.target = '_blank';
+      a.rel = 'noopener';
+    });
+  }
 
   function mostrarOk(c, foco) {
+    ctasCadastrado();
     passoCad.hidden = true;
     passoOk.hidden = false;
     $('[data-nome]', passoOk).textContent = c && c.nome ? ', ' + c.nome : '';
     var emp = $('#i-empresa');
     if (emp && c && c.empresa && !emp.value) emp.value = c.empresa;
-    if (foco) passoOk.focus({ preventScroll: desktop.matches });
+    if (foco) passoOk.focus({ preventScroll: true });
   }
 
   var jaCad = EVA.cadastro();
