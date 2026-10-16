@@ -94,6 +94,49 @@
     });
   });
 
+  // prévia: abas e-book / diagnóstico
+  var abas = Array.prototype.slice.call(document.querySelectorAll('.abas [role=tab]'));
+  function ativar(b, foco) {
+    abas.forEach(function (x) {
+      var on = x === b;
+      x.setAttribute('aria-selected', String(on));
+      x.tabIndex = on ? 0 : -1;
+      document.getElementById(x.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (foco) b.focus();
+  }
+  abas.forEach(function (b, i) {
+    b.addEventListener('click', function () { ativar(b); });
+    b.addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      e.preventDefault();
+      ativar(abas[(i + (e.key === 'ArrowRight' ? 1 : abas.length - 1)) % abas.length], true);
+    });
+  });
+
+  // prévia: ampliar página
+  var lb = $('#lb'), lbImg = $('#lb-img'), lbLeg = $('#lb-leg'), lbX = $('#lb-x'), voltar = null;
+  function fecharLb() { lb.hidden = true; lbImg.src = 'data:,'; document.body.style.overflow = ''; if (voltar) voltar.focus(); }
+  document.querySelectorAll('.th').forEach(function (b) {
+    b.addEventListener('click', function () {
+      voltar = b;
+      lbImg.src = b.getAttribute('data-img');
+      lbImg.alt = b.querySelector('img').alt;
+      lbLeg.textContent = b.getAttribute('data-leg');
+      lb.hidden = false;
+      document.body.style.overflow = 'hidden';
+      lbX.focus();
+      EVA.evento('previa_ampliar', { pagina: b.getAttribute('data-leg') });
+    });
+  });
+  lbX.addEventListener('click', fecharLb);
+  lb.addEventListener('click', function (e) { if (e.target === lb) fecharLb(); });
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') fecharLb();
+    if (e.key === 'Tab') { e.preventDefault(); lbX.focus(); }
+  });
+
   // revelação ao rolar
   var revs = document.querySelectorAll('[data-rev]');
   if ('IntersectionObserver' in window) {
