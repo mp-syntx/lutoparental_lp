@@ -178,18 +178,29 @@ section{position:relative;padding-block:96px}
 .numeros small{margin-top:auto;font-size:13px;color:var(--on-dark-soft)}
 .frase{margin-top:44px;font:700 clamp(22px,2.4vw,30px)/1.3 var(--display);color:#fff;max-width:20em}
 
-/* ---------- diagnóstico ---------- */
-.diag-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.9fr);gap:48px;align-items:center}
-.diag .sec-head .btn{margin-top:28px}
+/* ---------- diagnóstico: a identidade da ferramenta (creme, verde e rosa) num painel ---------- */
+.diag{background:#F7F5F0}
+.diag-grid{display:grid;grid-template-columns:1fr;gap:32px;background:#fff;border:1px solid #E7E2D8;border-radius:28px;padding:48px;box-shadow:0 34px 70px -46px rgba(29,62,49,.45)}
+.diag .tag{background:#1D3E31;color:#fff}
+.diag h2{color:#1D3E31}
+.btn-rosa{background:#E8236C;color:#fff}
+.btn-rosa:hover{background:#B8255A}
+.diag .sec-head{max-width:none}
+.diag .sec-sub{max-width:40em}
+.avalia .blocos{grid-template-columns:repeat(2,minmax(0,1fr))}
+.diag-cta{display:flex;flex-wrap:wrap;align-items:center;gap:16px 20px;padding-top:28px;border-top:1px solid #E7E2D8}
+.diag-cta p{font-size:15px;color:var(--ink-soft)}
 .avalia-t{margin-bottom:14px;font:700 19px/1.3 var(--display);color:var(--ink)}
-.avalia-t b{color:var(--rosa)}
+.avalia-t b{color:#E8236C}
+.avalia-t{color:#1D3E31}
 .blocos{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .blocos li{display:flex;align-items:center;gap:14px;padding:14px 18px;border-radius:16px;background:var(--c);color:var(--t,#fff);font:700 16.5px/1.3 var(--display);transition:transform .3s var(--sai)}
 .blocos li:hover{transform:translateX(6px)}
 .blocos span{flex:none;display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.18);font:700 14px/1 var(--body)}
 
 /* ---------- autores ---------- */
-.autores{background:var(--mist)}
+.autores{background:#fff}
+.faq{background:var(--mist)}
 .autores-grid{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .autor{background:#fff;border-radius:20px;padding:28px;border:1px solid var(--line)}
 .autor img{height:44px;width:auto;filter:brightness(0);opacity:.78}
@@ -265,7 +276,8 @@ details[open] .pl::after{transform:rotate(0)}
   .so-mobile{display:inline-flex;margin-top:28px;width:100%}
   .q-grade,.partes,.selos ul,.numeros,.autores-grid,.diag-grid{grid-template-columns:1fr}
   .partes{column-gap:0}
-  .diag-grid{gap:32px}
+  .diag-grid{gap:28px;padding:28px 22px;border-radius:22px}
+  .avalia .blocos{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   :root{--gut:16px}
