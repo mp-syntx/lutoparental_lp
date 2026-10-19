@@ -11,9 +11,9 @@
   var CONFIG = {
     endpoint: 'https://bastasentir.activehosted.com/proc.php',
     // formulário A #13 "LP Luto no trabalho" (lista 9, tag 84); `or` muda se o formulário for salvo de novo
-    cadastro: { u: '6AD23F5B7C0C1', f: '13', or: '9758a96f-0bd8-4993-82cc-a23756cfbe5c' },
+    cadastro: { u: '6AD23F5B7C0C1', f: '13', or: '7ae63a8d-f0d5-49e7-b2eb-b66c1e80a9e9' },
     // formulário B #15 "Diagnóstico de parentalidade" (lista 9, tag 85)
-    diagnostico: { u: '6AD23F5DB5E0F', f: '15', or: 'e4347f67-187b-4dc1-a120-f56a2558ea13' },
+    diagnostico: { u: '6AD23F5DB5E0F', f: '15', or: 'ca740c20-428c-4d26-82d7-3a9c43564d1d' },
     // formulário 12 "Indique sua empresa" (pipeline 3, etapa 25)
     indicacao: { u: '6AD0222C091DC', f: '12', or: 'ebb93716-167b-475e-8b5d-b9a99d06cca9' },
     // PDF otimizado entregue pelo time da Eva
